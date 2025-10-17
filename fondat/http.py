@@ -157,9 +157,7 @@ class Chain:
                 _response = (
                     await filter.asend(response)
                     if not exception
-                    else await filter.athrow(
-                        type(exception), exception, exception.__traceback__
-                    )
+                    else await filter.athrow(exception)
                 )
                 if _response:  # new response overrides previous response or exception
                     response = _response

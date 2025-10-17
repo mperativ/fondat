@@ -75,11 +75,11 @@ class Monitors(Monitor, list[Monitor]):
 
     async def record(self, measurement: Measurement) -> None:
         """Record a measurement in monitors."""
-        await asyncio.gather(monitor.record(measurement) for monitor in self)
+        await asyncio.gather(*[monitor.record(measurement) for monitor in self])
 
     async def flush(self) -> None:
         """Flush all cached measurements."""
-        await asyncio.gather(monitor.flush() for monitor in self)
+        await asyncio.gather(*[monitor.flush() for monitor in self])
 
 
 monitors = Monitors()
